@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RxJavaDemo</string>
+    <string name="first_button_name">点击绑定</string>
+    <string name="second_button_name">跳转到的第二个界面</string>
+    <string name="asyncSubject">AsyncSubject</string>
+    <string name="BehaviorSubject">BehaviorSubject</string>
+    <string name="publicSubject">PublishSubject</string>
+    <string name="operator">操作符</string>
+</resources>
