@@ -1,9 +1,9 @@
 package why.com.rxjavademo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -183,6 +183,27 @@ public class MainActivity extends BaseActivity {
 //            }
 //        });
 
+//        api.getUrl().subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<ResponseBody>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Toast.makeText(MainActivity.this, "11111", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                    }
+//
+//                    @Override
+//                    public void onNext(ResponseBody responseBody) {
+//                        try {
+//                            Toast.makeText(MainActivity.this, responseBody.string(), Toast.LENGTH_SHORT).show();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
         api.getUrl().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ResponseBody>() {
@@ -199,13 +220,12 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void onNext(ResponseBody responseBody) {
                         try {
-                            Toast.makeText(MainActivity.this, responseBody.string(), Toast.LENGTH_SHORT).show();
+                            Log.d("TAG", "responseBody" + responseBody.string());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }
                 });
-
     }
 
     @OnClick(R.id.button)
@@ -216,8 +236,6 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.button2)
     public void startToActivity() {
-        Intent intent = new Intent();
-        intent.setClass(this, SecondActivity.class);
-        startActivity(intent);
+        startActivity(this, SecondActivity.class);
     }
 }

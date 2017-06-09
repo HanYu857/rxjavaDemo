@@ -3,8 +3,11 @@ package why.com.rxjavademo;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -34,6 +37,8 @@ public class SecondActivity extends BaseActivity {
     Button btn5;
     @BindView(R.id.textView)
     TextView textView;
+    @BindView(R.id.img)
+    ImageView img;
 
 
     @Override
@@ -43,8 +48,12 @@ public class SecondActivity extends BaseActivity {
 
     @Override
     public void init(Bundle savedInstanceState) {
-
+        Glide.with(SecondActivity.this)
+                .load("https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png")
+                .placeholder(R.mipmap.ic_launcher)
+                .into(img);
     }
+
 
     @OnClick(R.id.btn1)
     public void asyncSubjectClick() {
@@ -185,5 +194,10 @@ public class SecondActivity extends BaseActivity {
                 Log.d("TAGSecondActivity", integers.toString());
             }
         });
+    }
+
+    @OnClick(R.id.btn6)
+    public void jumpToBottomActivity() {
+        startActivity(this, BottomActivity.class);
     }
 }

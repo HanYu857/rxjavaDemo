@@ -1,5 +1,7 @@
 package why.com.rxjavademo;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -26,6 +28,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mUnbinder.unbind();
+
+    }
+
+    public void startActivity(Activity currentActivity, Class<?> targetActivity) {
+        Intent intent = new Intent();
+        intent.setClass(currentActivity, targetActivity);
+        startActivity(intent);
     }
 
 }
