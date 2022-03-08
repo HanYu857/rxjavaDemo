@@ -16,6 +16,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewResId());
+        Log.d("HanYu","wang");
         mUnbinder = ButterKnife.bind(this);
         init(savedInstanceState);
     }
